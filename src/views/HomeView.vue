@@ -1,7 +1,9 @@
 <template>
   <div class="home">
     <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <HelloWorld msg="Start your Exam" />
+<button @click="$router.push('test')">Start</button>
+
   </div>
 </template>
 
