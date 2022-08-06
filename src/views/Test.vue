@@ -130,6 +130,7 @@ export default {
 
 .options {
     margin: 10px 20px;
+    
 }
 
 .buttons {
