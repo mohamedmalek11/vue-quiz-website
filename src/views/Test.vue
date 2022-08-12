@@ -5,18 +5,19 @@
         <h2>{{ questionCount + 1 }}. {{ dataR[questionCount].question }}</h2>
 
         <div v-for="(item, index) in answers" :key="index" class="options">
-            <input type="radio" :id="questionCount" name="slectedAns" :value="item" v-model="slectedAns">
-            <label :for="item">{{ item }}</label>
+            <input type="radio" :id="index" name="slectedAns" :value="item" v-model="slectedAns">
+            <label :for="index">{{ item }}</label>
         </div>
         <hr>
         <div class="buttons">
-            <button
+            <button v-if="questionCount > 0"
                 @click="perviosButton(); (questionCount >= 0 ? questionCount-- : questionCount === 0); answersGenerate(); changePagerout();">Pervios</button>
-            <p v-if="selectedAnsArr.includes('')">please choose an answer</p>
-            <!-- prevent unanswering for question -->
+
             <button
                 @click="pointsCounter(); (questionCount < 10 && (!selectedAnsArr.includes('')) ? questionCount++ : questionCount === 10); answersGenerate(); changePagerout();">Next</button>
         </div>
+        <p class="chooseAnswer" v-if="selectedAnsArr.includes('')">please choose an answer</p>
+        <!-- prevent unanswering for question -->
 
 
     </div>
@@ -89,8 +90,6 @@ export default {
             if (this.questionCount < 10) {
                 let basicAnswers = [...this.dataR[this.questionCount].incorrect_answers, this.dataR[this.questionCount].correct_answer];
                 this.answers = basicAnswers.sort();
-                console.log(this.questionCount);
-
             }
         },
         changePagerout: function () {
@@ -114,6 +113,7 @@ export default {
             this.dataR = response.data.results;
         } catch (err) {
             console.log(err)
+            alert(err)
         }
         this.answersGenerate();
         this.changePagerout();
@@ -130,14 +130,16 @@ export default {
 
 .options {
     margin: 10px 20px;
-    
 }
 
 .buttons {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
     margin-top: 10px;
+}
+.chooseAnswer {
+    color: red;
 }
 
 .resultsWraper {
