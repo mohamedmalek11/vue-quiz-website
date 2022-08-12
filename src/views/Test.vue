@@ -1,6 +1,7 @@
 <template class="test-page">
     <!-- prevent showing page after question ends -->
     <!-- prevent shoing page in arrey is empty  -->
+    <button @click="$router.push('/')" class="homeButton">home</button>
     <div v-if="dataR.length != 0 && questionCount < 10" class="wrapper">
         <h2>{{ questionCount + 1 }}. {{ dataR[questionCount].question }}</h2>
 
@@ -138,6 +139,7 @@ export default {
     align-items: center;
     margin-top: 10px;
 }
+
 .chooseAnswer {
     color: red;
 }
@@ -147,6 +149,12 @@ export default {
     justify-content: start;
     text-align: start;
     margin: 20px;
+}
+
+.homeButton {
+    background-color: white;
+    color: #42b983;
+    padding: 0px;
 }
 
 .results-col {

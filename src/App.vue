@@ -1,8 +1,5 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link>
-  </nav>
-  <router-view/>
+  <router-view class="mainDiv" />
 </template>
 
 <style>
@@ -14,7 +11,7 @@
   color: #2c3e50;
 }
 
-nav {
+.mainDiv {
   padding: 30px;
 }
 
@@ -34,5 +31,6 @@ button {
     color: white;
     border-radius: 5px;
     margin: 10px;
+     cursor: pointer;
 }
 </style>
